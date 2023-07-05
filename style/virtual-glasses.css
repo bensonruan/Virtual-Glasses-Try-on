@@ -1,0 +1,269 @@
+#virtual-glasses-app {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+#image-container{
+    position: relative;
+    margin-top: -55px;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    text-align: center;
+}
+
+#button-control{
+    position: relative;
+    bottom: 200px;
+    left: 0;
+    right: 0;
+    height: 65px;
+    margin: auto;
+    background: transparent;
+    border: 0;
+    width: 320px;
+    z-index: 99999;
+}
+
+.form-control.webcam-start{
+    top: 68%!important;
+    width: 200px;
+}
+
+.form-control.webcam-on{
+    top: 15%!important;
+}
+
+#canvas { 
+    width: 640px;
+    height: 480px;
+	overflow: hidden;
+    position: absolute;
+    top: 0;
+    z-index: 888!important;
+}
+
+.loading{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index:300000;
+    border: white 1px;
+    color: white;
+    padding: 75px 26px;
+    font-size: 22px;
+    margin: auto;
+    width: 200px;
+    height: 200px;
+}
+
+.spinner-border {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 200px;
+    color: white;
+    z-index:300000;
+    filter: alpha(opacity=80);
+    -moz-opacity: 0.8;
+    opacity: 0.8;   
+}
+
+.dot {
+    height: 10px;
+    width: 10px;
+    background-color: red;
+    border-radius: 50%;
+    display: inline-block;
+    z-index: 999999;
+}
+
+#arrowLeft{
+    position: absolute;
+    left: 10px;
+    top: 0;
+    bottom: 0;
+    z-index: 999999;
+    opacity: 0.7;
+    cursor: pointer;
+    margin: auto;
+}
+
+#arrowRight{
+    position: absolute;
+    right: 10px;
+    top: 0;
+    bottom: 0;
+    z-index: 999999;
+    opacity: 0.7;
+    cursor: pointer;
+    margin: auto;
+}
+
+#glasses-slider{
+    width: 100%;
+    height: 125px;
+    margin: auto;
+    position: absolute;
+    bottom: 0px;
+    background-color: black;
+    opacity: 0.7;
+    left: 0;
+    right: 0;
+    z-index: 998;
+}
+
+#glasses-list{
+    position: relative;
+    width: 85%;
+    height: 125px;
+    margin: auto;
+    overflow: hidden;
+}
+
+#glasses-slider ul{
+    list-style: none;
+    width: 10000px;
+    height: 125px;
+    padding-left: 10px;
+    margin-bottom: 0;
+    margin-top: 10px;
+}
+
+#glasses-slider ul li {
+    width: 100px;
+    height: 100px;
+    line-height: 80px;
+    background: white;
+    float: left;
+    margin: 5px 15px;
+    vertical-align: middle;
+    text-align: center;
+    cursor: pointer;
+}
+
+#glasses-slider ul li img {
+    width: 85px;
+    margin: auto;
+}
+
+.glasses{
+    border: 0px;
+}
+
+.selected-glasses{
+    border: 5px solid #0099cc;
+}
+
+.full-glasses{
+    height: 85px!important;
+    width: auto!important;
+}
+@media screen and (max-width: 480px) {
+    #glasses-slider{
+        width: 100%;
+        bottom: auto;
+        top: 500px;
+    }
+}
+@media screen and (max-width: 1024px) {
+    .loading{
+        padding: 55px 0px;
+        font-size: medium;
+        width: 150px;
+    }
+    .spinner-border{
+        width: 150px;
+        height: 150px;
+    }
+
+    #glasses-list {
+        width: 80%;
+    }
+    #glasses-list ul {
+        padding-left: 0;
+        margin-top: 25px;
+    }
+    #glasses-list ul li {
+        width: 75px;
+        height: 75px;
+        line-height: 60px;
+        margin: 5px 8px;
+    }
+    #glasses-list ul li img {
+        width: 65px;
+    }
+
+    .full-glasses{
+        height: 65px!important;
+        width: auto!important;
+        margin-left: 3px!important;
+    }
+
+    #glasses-btn{
+        font-size: 28px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    #face-glasses-app{
+        height: 100vh;
+    }
+    #arrowLeft{
+        height: 43px;
+    }
+    #arrowRight{
+        height: 43px;
+    }
+}
+
+@media screen and (min-width: 450px) and (max-width: 767px) {
+    .form-control.webcam-start{
+        top: 0!important;
+    }
+
+    #glasses-list {
+        width: 86%;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .form-control.webcam-start{
+        top: 5%!important;
+    }
+    .form-control.webcam-on{
+        top: 15%!important;
+    }
+    #button-control{
+        bottom: 350px;
+    }
+}
+
+.md-modal {
+    margin: 0!important;
+}
+
+
+#webcam-container #glasses-slider{
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    margin: 0 0 0 auto;
+}
+
+#webcam {
+    z-index: 1!important;
+    width: 640px;
+    height: 480px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+}

@@ -1,0 +1,11 @@
+Model Information:
+* title:	Cartoon Glasses
+* source:	https://sketchfab.com/3d-models/cartoon-glasses-fddd63a49615405fb17f5c7ff65345c2
+* author:	Lucas_Bartolomeo (https://sketchfab.com/Lucas_Bartolomeo)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Cartoon Glasses" (https://sketchfab.com/3d-models/cartoon-glasses-fddd63a49615405fb17f5c7ff65345c2) by Lucas_Bartolomeo (https://sketchfab.com/Lucas_Bartolomeo) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

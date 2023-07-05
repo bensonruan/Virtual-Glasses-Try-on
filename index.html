@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Virtual Glasses Try-On</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel='stylesheet' type='text/css' media='screen' href='https://unpkg.com/webcam-easy/demo/style/webcam-demo.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='style/virtual-glasses.css'>
+    <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>  
+    <script src="https://unpkg.com/@tensorflow/tfjs-core@2.4.0/dist/tf-core.min.js"></script>
+    <script src="https://unpkg.com/@tensorflow/tfjs-converter@2.4.0/dist/tf-converter.min.js"></script>
+    <script src="https://unpkg.com/@tensorflow/tfjs-backend-webgl@2.4.0/dist/tf-backend-webgl.min.js"></script>
+    <script src="https://unpkg.com/@tensorflow/tfjs-backend-cpu@2.4.0/dist/tf-backend-cpu.min.js"></script>
+    <script src="https://unpkg.com/@tensorflow-models/face-landmarks-detection@0.0.1/dist/face-landmarks-detection.min.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/webcam-easy/dist/webcam-easy.min.js"></script>
+    <script type="text/javascript" src="js/webcam-ui-lib.js"></script>
+</head>
+<body>
+    <main id="virtual-glasses-app">
+        <div class="form-control webcam-start" id="webcam-control">
+            <label class="form-switch">
+            <input type="checkbox" id="webcam-switch">
+            <i></i> 
+            <span id="webcam-caption">Try it On</span>
+            </label>      
+            <button id="cameraFlip" class="btn d-none"></button>                  
+        </div>
+        <div id="image-container">
+            
+            <canvas id="canvas" width="640" height="480"></canvas>
+            <div class="loading d-none">
+                Loading Model
+                <div class="spinner-border" role="status">
+                    <span class="sr-only"></span>
+                </div>
+            </div>
+
+            <div id="glasses-slider">
+                <img id="arrowLeft" src="images/arrow-left.png">
+                <div id="glasses-list">
+                    <ul>
+                        <li class="selected-glasses">
+                            <img src="3dmodel/glasses-01/glasses_01.png" data-3d-type="gltf" 
+                                                             data-3d-model-path="3dmodel/glasses-01/"
+                                                             data-3d-model="scene.gltf"
+                                                             data-3d-x="0"
+                                                             data-3d-y="0.5"
+                                                             data-3d-z="0"
+                                                             data-3d-up="10"
+                                                             data-3d-scale="0.01">
+                        </li>                       
+                        <li >
+                            <img src="3dmodel/glasses-02/glasses_02.png" data-3d-type="gltf" 
+                                                             data-3d-model-path="3dmodel/glasses-02/"
+                                                             data-3d-model="scene.gltf"
+                                                             data-3d-x="0"
+                                                             data-3d-y="0.3"
+                                                             data-3d-z="0"
+                                                             data-3d-up="0"
+                                                             data-3d-scale="0.4">
+                        </li>
+                        <li >
+                            <img src="3dmodel/glasses-03/glasses_03.png" data-3d-type="gltf" 
+                                                             data-3d-model-path="3dmodel/glasses-03/"
+                                                             data-3d-model="scene.gltf"
+                                                             data-3d-x="0"
+                                                             data-3d-y="0.3"
+                                                             data-3d-z="0"
+                                                             data-3d-up="-40"
+                                                             data-3d-scale="0.4">
+                        </li>
+                        <li>
+                            <img src="3dmodel/glasses-04/glasses_04.png" data-3d-type="gltf" 
+                                                            data-3d-model-path="3dmodel/glasses-04/"
+                                                            data-3d-model="scene.gltf"
+                                                            data-3d-x="0"
+                                                            data-3d-y="0.5"
+                                                            data-3d-z="0"
+                                                            data-3d-up="0"
+                                                            data-3d-scale="12">
+                        </li>
+                        <li >
+                            <img src="3dmodel/glasses-05/glasses_05.png" data-3d-type="gltf" 
+                                                             data-3d-model-path="3dmodel/glasses-05/"
+                                                             data-3d-model="scene.gltf"
+                                                             data-3d-x="0"
+                                                             data-3d-y="0"
+                                                             data-3d-z="0"
+                                                             data-3d-up="-80"
+                                                             data-3d-scale="0.11">
+                        </li>
+                        <li >
+                            <img src="3dmodel/glasses-06/glasses_06.png" data-3d-type="gltf" 
+                                                             data-3d-model-path="3dmodel/glasses-06/"
+                                                             data-3d-model="scene.gltf"
+                                                             data-3d-x="0"
+                                                             data-3d-y="0.3"
+                                                             data-3d-z="0"
+                                                             data-3d-up="-30"
+                                                             data-3d-scale="0.1">
+                        </li>
+                        <li >
+                            <img src="3dmodel/glasses-07/glasses_07.png" data-3d-type="gltf" 
+                                                             data-3d-model-path="3dmodel/glasses-07/"
+                                                             data-3d-model="scene.gltf"
+                                                             data-3d-x="0"
+                                                             data-3d-y="0.3"
+                                                             data-3d-z="0"
+                                                             data-3d-up="0"
+                                                             data-3d-scale="0.8">
+                        </li>
+                    </ul>
+                </div>
+                <img id="arrowRight" src="images/arrow-right.png">
+            </div>
+        </div>
+        
+        
+        <div id="errorMsg" class="col-12 col-md-6 alert-danger d-none">
+            Fail to start camera, please allow permision to access camera. <br/>
+            If you are browsing through social media built in browsers, you would need to open the page in Sarafi (iPhone)/ Chrome (Android)
+            <button id="closeError" class="btn btn-primary ml-3">OK</button>
+        </div>
+        <div class="md-modal md-effect-12">
+            <div id="app-panel" class="app-panel md-content row p-0 m-0">     
+                <div id="webcam-container" class="webcam-container col-12 d-none p-0 m-0">
+                    <video id="webcam" autoplay playsinline width="640" height="480"></video>
+                </div>
+            </div>        
+        </div>
+        <div class="md-overlay"></div>
+    </main>
+    <script type="module" src='js/virtual-glasses.js'></script>
+</body>
+</html>
