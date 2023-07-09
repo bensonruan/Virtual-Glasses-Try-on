@@ -1,4 +1,4 @@
-# Virtual-Glasses
+# Virtual Glasses Try on
 
 Implementation of virtual glasses using Three.js + TensorFlow.js Facemesh model. 
 
