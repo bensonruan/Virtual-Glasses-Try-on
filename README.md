@@ -1,10 +1,15 @@
 # Virtual Glasses Try on
 
-Implementation of virtual glasses using Three.js + TensorFlow.js Facemesh model. 
+Implementation of virtual glasses using Three.js + TensorFlow.js + Facemesh model. 
 
 Experience the cutting-edge fusion of computer vision and augmented reality
 
 Allowing users to try on various 3D glasses in real-time.
+
+## Live Demo
+**[https://bensonruan.com/virtual-try-on-glasses-with-javascript/](https://bensonruan.com/virtual-try-on-glasses-with-javascript/)**
+
+![virtual-glasses-try-on](https://bensonruan.com/wp-content/uploads/2023/07/Virtual-Glasses-Try-On-Demo.gif)
 
 ## Installing
 Clone this repository to your local computer
@@ -26,7 +31,9 @@ The facemesh detected keypoints that used for overlay the 3D Glasses:
 * Bottom of Nose : 2
 * Right Eye : 372
 
-## Put Mask On
+![face-landmarks](https://bensonruan.com/wp-content/uploads/2023/07/virtual_glasses_face_mesh_key_points.jpg)
+
+## Try glasses on
 * Click "Try it On" to turn on the Webcam switch, and allowing the browser to access your webcam 
 * Wait for a few seconds to Load Model for face landmark detection
 * Choose the 3d glasses you would like to try on, watch yourself in fashion
@@ -37,6 +44,7 @@ The facemesh detected keypoints that used for overlay the 3D Glasses:
 
 ## Library
 * [jquery](https://code.jquery.com/jquery-3.3.1.min.js) - JQuery
+* [three.js](https://threejs.org/) - JavaScript 3D Library
 * [webcam-easy.js](https://github.com/bensonruan/webcam-easy) - javascript library for accessing webcam stream and taking photos
 * [facemesh](https://github.com/tensorflow/tfjs-models/tree/master/facemesh) - MediaPipe Facemesh is a lightweight machine learning pipeline predicting 486 3D facial landmarks to infer the approximate surface geometry of a human face
 
