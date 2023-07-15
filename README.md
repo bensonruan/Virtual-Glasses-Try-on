@@ -31,7 +31,7 @@ The facemesh detected keypoints that used for overlay the 3D Glasses:
 * Bottom of Nose : 2
 * Right Eye : 372
 
-![face-landmarks](https://bensonruan.com/wp-content/uploads/2023/07/virtual_glasses_face_mesh_key_points.jpg)
+![face-landmarks](https://bensonruan.com/wp-content/webp-express/webp-images/uploads/2023/07/virtual_glasses_face_mesh_key_points.jpg.webp)
 
 ## Try glasses on
 * Click "Try it On" to turn on the Webcam switch, and allowing the browser to access your webcam 
